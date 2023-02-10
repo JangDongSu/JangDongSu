@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- mapper namespace="mapper 인터페이스 경로(패키지경로.인터페이스 java파일)" -->
+<mapper namespace="com.powerfuljava.mapper.GalleryAttachMapper">
+	
+	<!-- 파일 업로드 데이터 삽입 / 시작 /-->
+	<insert id="insert">
+		insert into gallery_attach (uuid, uploadPath, fileName, fileType, p_bno)
+		values(#{uuid}, #{uploadPath}, #{fileName}, #{fileType}, #{p_bno})
+	</insert>
+	<!-- 파일 업로드 데이터 삽입 / 끝 /-->
+	
+	<!-- 파일 업로드 데이터 가져오기 / 시작 /-->
+	<select id="findByP_Bno" resultType="com.powerfuljava.domain.GalleryAttachVO" >
+		select * from gallery_attach where p_bno = #{p_bno} 
+	</select>
+	<!-- 파일 업로드 데이터 가져오기 / 끝 /-->
+		
+	<!-- 파일 업로드 데이터 삭제하기 / 시작 /-->
+	<delete id="deleteAll">
+		delete from gallery_attach where p_bno = #{p_bno} 
+	</delete>
+	<!-- 파일 업로드 데이터 삭제하기 / 끝 /-->
+	
+	<!-- Quartz 스케쥴러 / 시작 /-->
+	<select id="getOldFiles" resultType="com.powerfuljava.domain.GalleryAttachVO" >
+		select * from gallery_attach where uploadPath = date_format(date_add(now(), interval -1 day), '%Y\\%m\\%d')
+	</select>
+	<!-- Quartz 스케쥴러 / 끝 /-->
+	
+	<!-- 파일 업로드 데이터 가져오기 - 리스트 / 시작 /-->
+	<select id="getAttachList" resultType="com.powerfuljava.domain.GalleryAttachVO" >
+		select * from gallery_attach where p_bno = #{p_bno} 
+	</select>
+	<!-- 파일 업로드 데이터 가져오기 - 리스트 / 끝 /-->
+	
+</mapper>

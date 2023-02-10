@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.powerfuljava.mapper.ReplyMapper">
+	
+	<!-- 댓글 삽입 / 시작 / -->
+	<insert id="insert">
+		insert into tbl_reply (bno, reply, replyer)
+			values(#{bno}, #{reply}, #{replyer})
+	</insert>
+	<!-- 댓글 삽입 / 끝 / -->
+	
+	<!-- 댓글 읽기 / 시작 / -->
+	<select id="read" resultType="com.powerfuljava.domain.ReplyVO">
+		select * from tbl_reply where rno = #{rno}
+	</select>
+	<!-- 댓글 읽기/ 끝/ -->
+	
+	<!-- 댓글 수정 / 시작 / -->
+	<update id="update">
+		update tbl_reply
+		set 
+		reply = #{reply},
+		updatedate = now()
+		where 
+		rno = #{rno}
+	</update>
+	<!-- replyer= #{replyer}, -->
+	<!-- 댓글 수정 / 끝 / -->
+	
+	<!-- 댓글 삭제 / 시작 / -->
+	<delete id="delete">
+		delete from tbl_reply where rno = #{rno}
+	</delete>
+	<!-- 댓글 삭제 / 끝 / -->
+	
+	<!-- 게시물 읽기 페이지 댓글 목록 / 시작 / -->
+	<select id="getListWithPaging" resultType="com.powerfuljava.domain.ReplyVO">
+		select rno, bno, reply, replyer, replyDate, updateDate 
+		from tbl_reply 
+		where bno = #{bno}
+		order by rno asc LIMIT #{criteria.offset}, #{criteria.amount}
+	</select>
+	<!-- 게시물 읽기 페이지 댓글 목록 / 끝 / -->
+	
+	<!-- 게시물 읽기 페이지 댓글 목록 페이지/ 시작 / -->
+	<select id="getCountByBno" resultType="int">
+		select count(rno) from tbl_reply
+		where bno = #{bno} 
+	</select>
+	<!-- 게시물 읽기 페이지 댓글 목록 페이지/ 끝 / -->
+	
+	<!-- <select id="getList" resultType="com.powerfuljava.domain.ReplyVO">
+		<![CDATA[select * from tbl_reply where bno >0]]>
+	</select>-->
+	
+	<!-- <select id="getTotalCount" resultType="int">
+		select count(*) from tbl_reply 
+		where
+		<trim suffix="and" prefixOverrides="WHERE">
+			<include refid="criteria"></include>
+		</trim> 
+		bno > 0
+	</select>-->
+</mapper>

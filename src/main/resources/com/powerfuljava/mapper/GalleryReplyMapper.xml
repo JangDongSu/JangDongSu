@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.powerfuljava.mapper.GalleryReplyMapper">
+	
+	<!-- 댓글 삽입 / 시작 / -->
+	<insert id="insert">
+		insert into gallery_reply (p_bno, reply, replyer)
+			values(#{p_bno}, #{reply}, #{replyer})
+	</insert>
+	<!-- 댓글 삽입 / 끝 / -->
+	
+	<!-- 댓글 읽기 / 시작 / -->
+	<select id="read" resultType="com.powerfuljava.domain.GalleryReplyVO">
+		select * from gallery_reply where p_rno = #{p_rno}
+	</select>
+	<!-- 댓글 읽기/ 끝/ -->
+	
+	<!-- 댓글 수정 / 시작 / -->
+	<update id="update">
+		update gallery_reply
+		set 
+		reply = #{reply},
+		updatedate = now()
+		where 
+		p_rno = #{p_rno}
+	</update>
+	<!-- replyer= #{replyer}, -->
+	<!-- 댓글 수정 / 끝 / -->
+	
+	<!-- 댓글 삭제 / 시작 / -->
+	<delete id="delete">
+		delete from gallery_reply where p_rno = #{p_rno}
+	</delete>
+	<!-- 댓글 삭제 / 끝 / -->
+	
+	<!-- 게시물 읽기 페이지 댓글 목록 / 시작 / -->
+	<select id="getListWithPaging" resultType="com.powerfuljava.domain.GalleryReplyVO">
+		select p_rno, p_bno, reply, replyer, replyDate, updateDate 
+		from gallery_reply
+		where p_bno = #{p_bno}
+		order by p_rno asc LIMIT #{galleryPaging.offset}, #{galleryPaging.amount}
+	</select>
+	<!-- 게시물 읽기 페이지 댓글 목록 / 끝 / -->
+	
+	<!-- 게시물 읽기 페이지 댓글 목록 페이지/ 시작 / -->
+	<select id="getCountByP_bno" resultType="int">
+		select count(p_rno) from gallery_reply
+		where p_bno = #{p_bno} 
+	</select>
+	<!-- 게시물 읽기 페이지 댓글 목록 페이지/ 끝 / -->
+	
+	<!-- <select id="getList" resultType="com.powerfuljava.domain.GalleryReplyVO">
+		<![CDATA[select * from tbl_reply where bno >0]]>
+	</select>-->
+	
+	<!-- <select id="getTotalCount" resultType="int">
+		select count(*) from tbl_reply 
+		where
+		<trim suffix="and" prefixOverrides="WHERE">
+			<include refid="criteria"></include>
+		</trim> 
+		bno > 0
+	</select>-->
+</mapper>

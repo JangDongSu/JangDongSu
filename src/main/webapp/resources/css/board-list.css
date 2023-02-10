@@ -1,0 +1,33 @@
+@charset "UTF-8";
+/*게시판 테이블*/
+.bo-table{border-top:2px solid black; height:auto; overflow:hidden; margin:30px 0;}
+.table{width:100%; height:auto; overflow:hidden; border-bottom:1px solid #E7E7E7;}
+.tabe-hover{background-color: #F0F5F8}
+.table thead tr th{background-color:#F9FAFC; text-align:center; border-bottom:2px solid #E7E7E7;}
+.table tbody tr td{text-align:center;}
+.table tbody tr td a{color:black;}
+.table tbody tr td:nth-child(2){text-align:justify;}
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th{padding:15px;}
+
+/*search-form*/
+.searchform{width:100%; margin:15px 0 15px 13px;  height:auto; overflow:hidden;}
+.select-style{height:30px; border-radius:0; border:1px solid #ccc;}
+.button{width:91px; height:30px; background-color: black; color:white;}
+
+.page-wrap{width:100%; height:auto; overflow:hidden; margin:30px 0;}
+.page{width:50%; margin:0 auto;}
+.page li{float:left; width:40px; height:40px; text-align:center; padding-top:9px;}
+.page li a{display:block; color:black;}
+.page li.active{font-weight:bold; font-size:15px; text-decoration: underline;}
+
+/*responsive*/
+@media(max-width:570px){
+	.searchform{margin:15px 0 15px 0;}
+}
+@media(max-width:490px){
+	.select-style{width:35%;}
+}
+@media(max-width:340px){
+	.select-style{width:35%;}
+	.button{width:25%;}
+}

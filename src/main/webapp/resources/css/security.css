@@ -1,0 +1,19 @@
+@charset "UTF-8";
+/*로그인, 로그아웃 페이지*/
+.login-layout{width:320px; margin:0 auto;}
+.red{color:red;}
+.blue{color:blue;}
+
+/*회원가입 페이지*/
+.join_wrapper{width:800px; margin:0 auto;}
+
+/*로그인 창에 회원가입 메뉴*/
+.find_wrap{width:100%; height:auto; overflow:hidden; margin-top:15px;}
+.find_wrap ul{/*width:100%;*/ float:left; padding-left:27px;}
+.find_wrap li{list-style:none; float:left; text-align:center}
+.find_wrap li a{display:block; width:98px; height:30px; padding:4px 10px 0 0; position:relative; box-sizing:border-box; color:#7D7A78;}
+.find_wrap li:nth-child(2) a{width:103px; padding:4px 15px 0 0; }
+.find_wrap li:nth-child(2) a::before{right:6px}
+.find_wrap li:last-child a{width:66px;}
+.find_wrap li:last-child a::before{background:none;}
+.find_wrap li a::before{content:""; position: absolute; width:1px; height:12px; background-color:#DADADA; top:8px; right:8px;}

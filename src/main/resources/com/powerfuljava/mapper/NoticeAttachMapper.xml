@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- mapper namespace="mapper 인터페이스 경로(패키지경로.인터페이스 java파일)" -->
+<mapper namespace="com.powerfuljava.mapper.NoticeAttachMapper">
+	
+	<!-- 파일 업로드 데이터 삽입 / 시작 /-->
+	<insert id="insert">
+		insert into notice_attach (uuid, uploadPath, fileName, fileType, n_bno)
+		values(#{uuid}, #{uploadPath}, #{fileName}, #{fileType}, #{n_bno})
+	</insert>
+	<!-- 파일 업로드 데이터 삽입 / 끝 /-->
+	
+	<!-- 파일 업로드 데이터 가져오기 / 시작 /-->
+	<select id="findByN_Bno" resultType="com.powerfuljava.domain.NoticeAttachVO" >
+		select * from notice_attach where n_bno = #{n_bno} 
+	</select>
+	<!-- 파일 업로드 데이터 가져오기 / 끝 /-->
+	
+	<!-- 파일 업로드 데이터 삭제하기 / 시작 /-->
+	<delete id="deleteAll">
+		delete from notice_attach where n_bno = #{n_bno} 
+	</delete>
+	<!-- 파일 업로드 데이터 삭제하기 / 끝 /-->
+	
+	<!-- Quartz 스케쥴러 / 시작 /-->
+	<select id="getOldFiles" resultType="com.powerfuljava.domain.NoticeAttachVO" >
+		select * from notice_attach where uploadPath = date_format(date_add(now(), interval -1 day), '%Y\\%m\\%d')
+	</select>
+	<!-- Quartz 스케쥴러 / 끝 /-->
+	
+</mapper>

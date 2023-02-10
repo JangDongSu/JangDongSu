@@ -1,0 +1,122 @@
+@charset "UTF-8";
+
+/*textarea - content Style*/
+.pre_styler{white-space: pre-line; font-family: 'Noto Sans KR', sans-serif; font-size:14px; border:0; padding:12px; margin-bottom:0;}
+.pre_styler img{width:100%;}
+.fc_article{padding:0; height:auto; overflow:hidden;}
+	
+/*파일 업로드 정보 - 이미지 첨부 파일 리스트*/
+.uploadResult{width:100%; background-color:gray;}
+.uploadResult ul{display:flex; flex-flow:row; justify-content: center; align-items: center;}
+.uploadResult ul li{list-style: none; padding: 10px;}
+.uploadResult ul li img{width:100px; cursor:pointer;}
+	
+/*파일 업로드 정보 - 이미지 크게 미리보기*/
+.bigPictureWrapper{position: fixed/*absolute*/; display:none; left:0px; justify-content: center; align-items: center; top:0; width:100%; height:100%; 
+	background-color: gray; z-index:1100; background:rgba(0,0,0,0.5);}
+.bigPicture{position: relative;display: flex; justify-content: center; align-content: center; top:15%; left:0;}
+.bigPicture img{width:650px; /*height:510px;*/ /*height속성 임시 적용 */ }
+
+/*게시판 디자인 - get, register, modify*/
+.article-layout{width:100%; height:auto; overflow: hidden; margin-top:30px; border-bottom:2px solid black;}
+.article-layout p{margin-bottom:0;}
+.article-layout label{padding-top:1px;}
+.article-top{width:100%; height:auto; overflow:hidden; border-bottom:1px solid #d7d7d7;  border-top:1px solid #d7d7d7;}
+.article-reg-top{width:100%; height:auto; overflow:hidden; border-bottom:1px solid #d7d7d7;  border-top:1px solid #d7d7d7;}
+.article-reg-top:first-child{border-top:0px; border-bottom:0;}
+.article-reg-top:nth-child(3){border-top:0;}
+.article-reg-top:nth-child(4){border-top:0;}
+.article-reg-top:nth-child(5){border-top:0;}
+.article-reg-top:last-child{border-bottom:0;}
+.article-title{width:100%; border-top:2px solid black; height:auto; padding:15px 0 15px 15px; box-sizing: border-box; overflow: hidden;}
+.article-field{width:50%; float:left; border-top:1px dotted black;}
+.field{width:50%;}
+.field-style{float:left; height:auto; overflow: hidden; padding:15px 0 15px 15px; box-sizing: border-box;}
+.get-th{background-color: #F9FAFC;}
+.article-bottom{width:100%; border-top:1px solid #d7d7d7; height:auto; overflow:hidden; margin:30px 0; border-bottom:1px solid #d7d7d7;}
+.article-bottom p{float:left;}
+.field1{width:23%;}
+.field2{width:77%;}
+.field3{width:100%;}
+.field-address{width:25%;}
+.field-address1{width:75%;}
+.file-input{padding:15px;}
+.form-stye{width:95%; height:25px; padding-left:8px; box-sizing: border-box; border:1px solid #DEDEDE; font-family: 'Noto Sans KR', sans-serif; 
+	font-size:1em}
+.form-style1{width:84.5%; height:25px; padding-left:8px; box-sizing: border-box; border:1px solid #DEDEDE; font-family: 'Noto Sans KR', sans-serif; 
+	font-size:1em; margin-right:1%;}
+.form-style{height:25px; padding-left:8px; box-sizing: border-box; border:1px solid #DEDEDE; font-family: 'Noto Sans KR', sans-serif; 
+	font-size:1em; margin-right:1%;}
+.form-stye:read-only{background-color:#e6e6e6;}
+.form-style:read-only{background-color:#e6e6e6;}
+.get-content{width:100%; height:auto; overflow:hidden; padding-top:40px;}
+.get-content textarea{width:100%; height:500px; resize: none; border:1px solid #cbcbcb;}
+.ck-editor__editable {min-height: 500px;}
+
+
+/*첨부이미지*/
+.upload-image-list{width:85%; height:auto; position: relative; box-sizing: border-box; padding:30px 0;margin:30px auto;}
+/*500px*/ /*overflow: hidden;*/ 
+/*.slide{width: 100%; height:500px; position: relative; overflow: hidden; margin:0 auto;}*/
+.upload-image-list ul{width:100%; height:auto; position: relative; }
+.upload-image-list ul li{width:100%; height:auto; overflow:hidden; /*position: absolute; top:0; left:0; display:none;*/  margin-top:50px;}
+.upload-image-list ul li:first-child{margin-top:0;}
+.upload-image-list ul li img{width:100%; display:block; height:auto;}
+
+.slide ul li:first-child{display: block;}
+#slide_previous{left:10px;}
+#slide_next{right:10px;}
+.slide-btn{position: absolute;  top:50%; transform: translateY(-50%); font-size:4em; cursor: pointer; z-index:39;}
+
+/*첨부파일*/
+.upload-result{width:100%; height:auto; overflow:hidden; background-color:#F9FAFC; border-top:1px solid #cdcdcd;}
+.upload-result ul{display:flex; flex-flow:row;justify-content: center; align-items: center;}
+.upload-result ul li{list-style: none; padding: 10px;}
+.upload-result ul li img{width:100px; cursor:pointer;}
+
+/*register - button - commons*/
+.bottom_button{width:220px; margin:15px auto; height:auto; overflow: hidden;}
+.button{width:100px; height:45px; border-style:none; float:left;}
+.button-comm{background-color: black; color:white;}
+.button-submit{background-color:#0B5ED7; color:white; margin-right:10px;}
+.button-warning{background-color:#ff4e2f; color:white;}
+
+/* 버튼 바깥쪽 영역*/
+.button-margin-top{margin-top:10px;}
+.button-margin-bottom{margin-bottom:10px;}
+.button-margin-left{margin-left:10px;}
+.button-margin-right{margin-right:10px;}
+
+.bottom_button a{display:block; text-align:center; padding-top:12px;}
+.bottom_button a:hover{text-decoration:none; color:white;}
+
+/*modify - button*/
+.bottom_button1{width:320px; margin:15px auto; height:auto; overflow: hidden;}
+.bottom_button1 a{display:block; text-align:center; padding-top:12px;}
+.bottom_button1 a:hover{text-decoration:none; color:white;}
+
+pre{border:0; border-radius:0;background:none; font-size:1.2em;}
+
+.reply-list{width:100%; height:auto; overflow:hidden;}
+.chat li{padding:15px;}
+
+/*댓글*/
+.register-reply{width:100%; height:200px; padding-top:15px;}
+.user-name{width:15%; float:left; height:70px; }
+.reply-content{width:71.8%; margin-left:1.5%; float:left; }
+.form-style{padding-left:8px; box-sizing: border-box; border:1px solid #DEDEDE; font-family: 'Noto Sans KR', sans-serif;}
+.reply-button{width:9%; margin-left:2.7%; float:left;}
+.replyer{width:100%; height:30px; }
+.replyer:read-only{background-color:#dfdfdf;}
+.reply{width:100%; height:100px; resize: none;}
+
+/*회원가입*/
+.join_wrapper{margin-top:60px; }
+/*.join_wrapper .article-reg-top{border-bottom:0px;}*/
+#zipCode{width:30%;}
+#address{width:35%;}
+#addressDetail{width:40%;}
+.address-input{height:25px; padding-left:8px; box-sizing: border-box; border:1px solid #DEDEDE; margin-top:5px;}
+.readonly:read-only{background-color:#dfdfdf;}
+
+/*page list*/

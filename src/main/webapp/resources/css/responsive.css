@@ -1,0 +1,186 @@
+@charset "UTF-8";
+@media(max-width:1210px){
+	
+	#gnb{display:none;}
+	#top_menu{height:5px; background-color:silver;}
+	header{height:90px;}
+	#m-menu-btn{display:block; top:23%;}
+	#banner_area{height:500px;}
+	#mainbanner{height:auto; margin-top:85px;}
+	
+	ul.img-latest-list li{height:100%;}
+	ul.img-latest-list li a img{height:auto;}
+	
+	ul.img-latest-list2 li{height:100%;}
+	ul.img-latest-list2 li:nth-child(4){clear:both;}
+	ul.img-latest-list2 li a img{height:auto;}
+	/*subpage*/
+	.subpage_banner{height:500px; margin-top:89px; background-position-y:-3px; background-position-x:0px;}
+	/*.subpage_banner .page-header{top:53%; font-size:1.4em; left:18%;}*/
+	
+	ul.page{width:85%; height:auto; overflow:hidden; padding-left:0; margin:0 auto;}
+	ul.page li{width:8.33%;}
+	
+	
+	.contents{padding-top:2%;}
+	.content{width:47.5%; margin-right:5%; height:100%;}
+	.content:nth-child(3){margin-top:5%; width:100%; height:auto; overflow:hidden; padding-bottom:9px;}
+	#content_wrap{margin-bottom:5%;}
+	.login{display:none;}
+	
+	/*갤러리 게시판*/
+	.gallery-list li{width:23.875%; margin-right:1.5%; height:100%;}
+	.gallery-list li a span.view-image img{height:100%;}
+	
+	div.upload-image-list{width:95%; }
+	div.upload-image-list ul{padding-left:0;}
+	
+	
+}
+ @media(min-width:992px) and (max-width:1210px){
+ 	.container{width:95%;}
+ } 
+
+@media(max-width:992px){
+	.container{width:90%;}
+	.content{width:100%; margin-right:0; margin-bottom:15px; padding-bottom:1%;}
+	.content:last-child{height:auto;}
+	.tab_cont{height:auto;}
+	ul.img-latest-list2 li{width:48%;}
+	ul.img-latest-list2 li:nth-child(even){margin-right:0;}
+	ul.img-latest-list2 li:nth-child(3){margin-right:2%; clear:both;}
+	ul.img-latest-list2 li:nth-child(4){margin-bottom:2%; clear:none;}
+	ul.img-latest-list2 li:nth-child(5){clear:both;}
+	.tab-nav{padding-left:2.3%;}
+	.tab-nav li{width:30%;}
+	.tab-nav li a{width:100%;}
+	
+	/*갤러리 게시판*/
+	.gallery-list li{width:32%; margin-right:2%;}
+	.gallery-list li:nth-child(3){margin-right:0;}
+	.gallery-list li:nth-child(4){margin-right:2%;}
+	.gallery-list li:nth-child(6){margin-right:0;}
+	.gallery-list li:nth-child(8){margin-right:2%;}
+	.gallery-list li:nth-child(9){margin-right:0;}
+	.gallery-list li:nth-child(12){margin-right:0;}
+	.gallery-list li:nth-child(15){margin-right:0;}
+	
+}
+@media(max-width:750px){
+		/*갤러리 게시판*/
+	.gallery-list li{width:49%; margin-right:2%;}
+	.gallery-list li:nth-child(even){margin-right:0;}
+	.gallery-list li:nth-child(3){margin-right:2%;}
+	.gallery-list li:nth-child(9){margin-right:2%;}
+	.gallery-list li:nth-child(15){margin-right:2%;}
+	/*.gallery-list li:nth-child(6){margin-right:0;}
+	.gallery-list li:nth-child(8){margin-right:2%;}
+	
+	.gallery-list li:nth-child(12){margin-right:0;}
+	*/
+}
+@media(max-width:670px){
+	.content-area{width:95%; margin:0 auto;}
+	.content:last-child{margin-top:0;}
+	#banner_area .page-header{font-size:1.6em;}
+	.hamberger_menu{width:65%; left:-65%;}
+	.content{width:100%; margin-right:0;}
+	.gallery-title{height:54px;}
+	
+	/*로그인페이지*/
+	.login-layout{width:80%;}
+	
+	/*subpage*/
+	.subpage_banner{height:400px; background-position-y:-3px; background-position-x:0px;}
+	.subpage_banner .page-header{top:53%; font-size:1.4em; left:18%; padding-top:0;}
+	
+	.wrap2{padding-top:15px;}
+	.gal-object{overflow:hidden; text-overflow: ellipsis;}
+	
+	ul.page{width:85%; height:auto; overflow:hidden; padding-left:0; margin:0 auto;}
+	ul.page li{width:8.33%;}
+	.mobile-login li{width:41%;}
+	.gallery-list ul{padding-left:1%;}
+	.searchform{width:100%; margin:15px 0 15px 1%;}
+	.col-lg-12{padding-left:0; padding-right:0;}
+	
+	div.upload-image-list{width:100%; margin:10px 0; padding:10px 0}
+	div.get-content{padding-top:10px;}
+	
+
+	
+}
+
+/*아이폰6, 12PRO, XR, */
+@media(max-width:414px){
+	/*MAIN*/
+	.logo{font-size:1.5em;}
+	.hamberger_menu{width:65%; left:-65%;}
+	#banner_area .page-header{font-size:1.4em; left:5px; top:30%;}
+	#banner_area{height:200px;}
+	.contents{padding-top:50px;}
+	.content{width:100%; margin-bottom:15px; margin-right:0;}
+	.content:last-child{margin-top:0;}
+	#content_wrap{margin-bottom:22px;}
+	.copyright{font-size:0.9em}
+	
+	ul.img-latest-list{padding-left:0;}
+	ul.img-latest-list li{width:100%;}
+	ul.img-latest-list li:nth-child(3){margin-bottom:2%;}
+	
+	
+	ul.img-latest-list2 li{width:100%;}
+	ul.img-latest-list2 li:nth-child(4){margin-bottom:2%;}
+	ul.img-latest-list2 li:nth-child(5){margin-bottom:2%;}
+	
+	/*subpage*/
+	.subpage_banner{height:350px; background-position-y:-3px; background-position-x:-83px;}
+	.page-header{top:53%; font-size:1.4em; left:18%; padding-top:0;}
+	
+	
+	/*게시판*/
+	.wrap2{padding-top:15px;}
+	ul.page{width:85%; height:auto; overflow:hidden; padding-left:0; margin:0 auto;}
+	ul.page li{width:8.33%;}
+	.select-style{font-size:0.7em;}
+	.pull-right button.button{width:100%;}
+	.container{width:90%; margin:0 auto;}
+	.searchform{width:100%; margin:15px 0 15px 0;}
+	
+}
+
+
+/*갤럭시 360px*/
+@media(max-width:360px){
+	/*MAIN*/
+	.logo{font-size:1em;}
+	.hamberger_menu{width:65%; left:-65%;}
+	#mainbanner{height:200px; background-position-y:0;}
+	#banner_area{height:200px;}
+	.contents{padding-top:50px;}
+	.content{width:100%; margin-bottom:15px; margin-right:0;}
+	.content:last-child{margin-top:0;}
+	#content_wrap{margin-bottom:22px;}
+	.copyright{font-size:0.9em}
+	.mobile-login{padding-left:0;}
+	.content-title h2{font-size:1em;}
+	
+	/*subpage*/
+	.subpage_banner{height:200px; background-position-y:-3px; background-position-x:0px;}
+	#banner_area .page-header{transform:translate(0,-61%); font-size:1em;}
+	.page-header{top:53%; font-size:1.4em; left:18%; transform:translate(-50%,-61%); padding-top:0;}
+	
+	/*로그인페이지*/
+	.login-layout{width:80%;}
+	.find_wrap ul{padding-left:0;}
+	.find_wrap li{font-size:0.85em; }
+	.find_wrap li a{padding:4px 5px 0 0; width:74px; margin-right:0;}
+	.find_wrap li:nth-child(2) a{width:85px; padding:4px 5px 0 0;}
+	.find_wrap li a::before{right:2px; top:5px;}
+	.find_wrap li:nth-child(2) a::before{right:3px;}
+	.find_wrap li:last-child a{width:55px;}
+	
+}
+@media(max-width:320px){
+	
+}

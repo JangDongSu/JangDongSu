@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.powerfuljava.mapper.MemberMapper">
+
+<!-- 권한 -->
+<resultMap type="com.powerfuljava.domain.MemberVO" id="memberMap">
+        <id property="userId" column="userId" />
+        <result property="userId" column="userId" />
+        <result property="userPw" column="userPw" />
+        <result property="userName" column="userName" />
+        <result property="zipCode" column="zipCode" />
+        <result property="address" column="address" />
+        <result property="addressDetail" column="addressDetail" />
+        <result property="phone" column="phone" />
+        <result property="email" column="email" />
+        <result property="gender" column="gender" />
+        <result property="enabled" column="enabled" />
+        <result property="regDate" column="regdate" />
+        <result property="updateDate" column="updatedate" />
+        <collection property="authList" resultMap="authMap" />
+    </resultMap>
+
+    <resultMap type="com.powerfuljava.domain.AuthVO" id="authMap">
+        <result property="userId" column="userId" />
+        <result property="auth" column="auth" />
+    </resultMap>
+
+    <!-- 로그인 정보 -->
+    <select id="read" resultMap="memberMap">
+        select mem.userid, userpw, username, zipCode, address, addressdetail, phone, email, gender, enabled, regdate, updatedate, auth
+        from tbl_member mem LEFT OUTER JOIN tbl_member_auth auth on mem.userid = auth.userid
+        where mem.userid = #{userId}
+    </select>
+    
+    <!-- 관리자페이지 회원정보 -->
+    <select id="getUserId" resultMap="memberMap">
+        select mem.userid, username, address, addressdetail, phone, email, regdate, auth
+        from tbl_member mem LEFT OUTER JOIN tbl_member_auth auth on mem.userid = auth.userid
+    </select>
+    
+    <!-- 관리자페이지 권한정보 -->
+    <select id="getAuthList" resultMap="authMap">
+        select mem.userid, auth
+        from tbl_member_auth LEFT OUTER JOIN tbl_member mem.userid on auth = auth.auth
+    </select>
+    
+    <!-- 아이디 중복 체크 -->
+    <!-- <select id="idCheck" resultType="int" resultMap="memberMap">
+    	select count(*) from tbl_member where = mem.userId = #{userId}
+    </select>-->
+    
+    <!-- 회원가입 -->
+    <insert id="insert">
+    	insert into tbl_member(userid, userpw, username, zipCode, address, addressdetail, phone, email, gender, enabled)
+    	values (#{userId}, #{userPw}, #{userName}, #{zipCode}, #{address}, #{addressDetail}, #{phone}, #{email}, #{gender}, 1)
+    </insert>
+    
+    <!-- 회원 가입시 주어지는 권한 -->
+    <insert id="insertAuth">
+    	insert into jdongsu_db.tbl_member_auth(userid, auth)
+    	values (#{userId}, "ROLE_USER")
+    </insert>
+    
+    <!-- 회원정보수정 -->
+    <update id="update">
+    	update tbl_member
+		set
+		userpw= #{userPw}, 
+		zipCode = #{zipCode},
+		address = #{address},
+		addressdetail = #{addressDetail},
+		phone = #{phone},
+		email= #{email},
+		updatedate = now()
+		where userid = #{userId}
+    </update>
+</mapper>

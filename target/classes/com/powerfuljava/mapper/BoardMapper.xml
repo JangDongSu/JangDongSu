@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.powerfuljava.mapper.BoardMapper">
+	<select id="getList" resultType="com.powerfuljava.domain.BoardVO">
+		<![CDATA[select * from tbl_board where bno >0]]>
+	</select>
+	<sql id="criteria">
+		<where>
+		 	<trim prefix="(" suffix=")" prefixOverrides="OR">
+			<!-- <trim prefix="(" suffix=")" prefixOverrides="AND | OR">-->
+				<foreach item="type" collection="typeArr">
+					<trim prefix="OR">
+					<!-- <trim prefix="AND">-->
+						<choose>
+							<when test="type == 'T'.toString()">
+								title like CONCAT('%', #{keyword}, '%')
+							</when>
+							<when test="type == 'C'.toString()">
+								content like CONCAT('%', #{keyword}, '%')
+							</when>
+							<when test="type == 'W'.toString()">
+								writer like CONCAT('%', #{keyword}, '%')
+							</when>
+						</choose>
+					</trim>
+				</foreach>
+			</trim>
+		</where>
+	</sql>
+	<select id="getListWithPaging" resultType="com.powerfuljava.domain.BoardVO">
+		select @rownum := @rownum+1 as rn, bno, title, content, writer, regdate, updatedate, replycnt, viewcount from jdongsu_db.tbl_board, (select @rownum:=0) A
+		<include refid="criteria"></include>
+		 order by rn desc limit #{offset}, #{amount}
+	</select>
+	
+	<insert id="insert" useGeneratedKeys="true" keyProperty="bno">
+	insert into tbl_board (title, content, writer)
+		values(#{title}, #{content}, #{writer})
+	</insert>
+	
+	<!-- 조회수 -->
+	<update id="getViewCount">
+		update tbl_board
+		set
+		viewcount = viewcount+1
+		where bno = #{bno}
+	</update>
+	
+	<update id="update">
+		update tbl_board 
+		set 
+		title = #{title}, 
+		content = #{content}, 
+		writer = #{writer}, 
+		updatedate = now()
+		where bno = #{bno}
+	</update>
+	<delete id="delete">
+		delete from tbl_board where bno = #{bno}
+	</delete>
+	<select id="read" resultType="com.powerfuljava.domain.BoardVO">
+		select * from tbl_board where bno = #{bno}
+	</select>
+	<select id="getTotalCount" resultType="int">
+		select count(*) from tbl_board 
+		where
+		<trim suffix="and" prefixOverrides="WHERE">
+			<include refid="criteria"></include>
+		</trim> 
+		bno > 0
+	</select>
+	<update id="updateReplyCnt">
+		update tbl_board set replycnt = replycnt + #{amount} where bno = #{bno}
+	</update>
+</mapper>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.powerfuljava.mapper.GalleryMapper">
+	<select id="getList" resultType="com.powerfuljava.domain.GalleryVO">
+		<![CDATA[select * from photo_gallery where p_bno >0]]>
+	</select>
+	<sql id="galleryPaging">
+		<where>
+		 	<trim prefix="(" suffix=")" prefixOverrides="OR">
+			<!-- <trim prefix="(" suffix=")" prefixOverrides="AND | OR">-->
+				<foreach item="type" collection="typeArr">
+					<trim prefix="OR">
+					<!-- <trim prefix="AND">-->
+						<choose>
+							<when test="type == 'T'.toString()">
+								title like CONCAT('%', #{keyword}, '%')
+							</when>
+							<when test="type == 'C'.toString()">
+								content like CONCAT('%', #{keyword}, '%')
+							</when>
+							<when test="type == 'W'.toString()">
+								writer like CONCAT('%', #{keyword}, '%')
+							</when>
+						</choose>
+					</trim>
+				</foreach>
+			</trim>
+		</where>
+	</sql>
+	<select id="getListWithPaging" resultType="com.powerfuljava.domain.GalleryVO">
+		select @rownum := @rownum+1 as rn, p_bno, title, content, writer, regdate, updatedate, replycnt from jdongsu_db.photo_gallery, (select @rownum:=0) A
+		<include refid="galleryPaging"></include>
+		 order by rn desc limit #{offset}, #{amount}
+	</select>
+			
+	<insert id="insert" useGeneratedKeys="true" keyProperty="p_bno">
+		insert into photo_gallery (title, content, writer)
+		values (#{title}, #{content}, #{writer})
+	</insert>
+	
+	<update id="update">
+		update photo_gallery 
+		set 
+		title = #{title}, 
+		content = #{content}, 
+		writer = #{writer}, 
+		updatedate = now()
+		where p_bno = #{p_bno}
+	</update>
+	
+	<delete id="delete">
+		delete from photo_gallery where p_bno = #{p_bno}
+	</delete>
+	
+	<select id="read" resultType="com.powerfuljava.domain.GalleryVO">
+		select * from photo_gallery where p_bno = #{p_bno}
+	</select>
+	
+	<select id="getTotalCount" resultType="int">
+		select count(*) from photo_gallery 
+		where
+		 <trim suffix="and" prefixOverrides="WHERE">
+			<include refid="galleryPaging"></include>
+		</trim> 
+		p_bno > 0
+	</select>
+	
+	<update id="updateReplyCnt">
+		update photo_gallery set replycnt = replycnt + #{amount} where p_bno = #{p_bno}
+	</update>
+	
+	<!-- 메인 페이지에 최신글 출력 -->
+	<select id="getLatestGallery" resultType="com.powerfuljava.domain.GalleryVO">
+		 select @rownum := @rownum+1 as rn, p_bno, title, writer, regdate 
+		from jdongsu_db.photo_gallery, (select @rownum:=0) A
+		<include refid="galleryPaging"></include>
+		 order by regdate desc limit 4 
+	</select>
+</mapper>
